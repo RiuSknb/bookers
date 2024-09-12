@@ -1,0 +1,28 @@
+<h1>Books</h1>
+
+<p>title</p>
+
+<% @books.each do |book| %>
+  <span><%= book.title %></span>
+<% end %>
+
+<!--URLの反映ができてないです。修正したら、以下のページも変更してね
+・books_conroller.rb > createの行-->
+
+
+
+
+
+<!-- form_with部分 -->
+
+<h1>New book</h1>
+<%= form_with model: @book, url:'/books', method: :post do |f| %>
+
+<h4>Title</h4>
+<%= f.text_field :title %>
+
+<h4>Body</h4>
+<%= f.text_area :body %>
+
+<%= f.submit 'Create Book' %>
+<% end %>
