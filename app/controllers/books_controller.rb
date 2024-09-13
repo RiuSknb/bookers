@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
 
-  def books
+  def index
     @book = Book.new
     #createへの受け渡し
     @books = Book.all
