@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   # get 'books/new'
+  root to: 'homes#top'
+  # get '/' =>'homes#top'
+  get 'start' =>'books#books'
   post 'books' => 'books#create'   #9/12追記
   # get 'books/index'
   get 'books/show'

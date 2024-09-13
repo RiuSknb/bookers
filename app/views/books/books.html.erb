@@ -1,13 +1,23 @@
 <h1>Books</h1>
 
 <p>title</p>
+<p>body</p>
 
 <% @books.each do |book| %>
   <span><%= book.title %></span>
+
 <% end %>
 
-<!--URLの反映ができてないです。修正したら、以下のページも変更してね
-・books_conroller.rb > createの行-->
+<p>----</p>
+
+
+<% @books.each do |book| %>
+  <span><%= book.body %></span>
+  <p>show</p>
+  <p>edit</p>
+  <p>destroy</p>
+<% end %>
+
 
 
 
