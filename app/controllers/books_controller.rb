@@ -1,44 +1,57 @@
 class BooksController < ApplicationController
-  # def new
-  #   @book = Book.new
-  # end
-  def books
-  # books.html erbからの入力
 
+  def books
     @book = Book.new
     #createへの受け渡し
-
     @books = Book.all
     #Book（保存してあるデータ）を全取得
   end
 
 
-
   def create
     # データを受け取り新規登録するためのインスタンス作成
-    book = Book.new(book_params)
-    # データをデータベースに保存するためのsaveメソッド実行
-    book.save
+    @book = Book.new(book_params)
 
-    # 4. index画面へリダイレクト
-    redirect_to '/books'
+    # データをデータベースに保存するためのsaveメソッド実行
+    if @book.save
+      flash[:notice] = 'Book was successfully created.'
+      redirect_to book_path(@book.id)
+    else
+      # `books/books`というビューファイルを表示するための命令
+      @books = Book.all
+      # →　@listsが空になっているため、再度定義する。
+
+      render :books
+    end
   end
 
-
-  # def index⇒booksに変更
-  # end
 
   def show
+    @book = Book.find(params[:id])
   end
+
 
   def edit
+    @book = Book.find(params[:id])
   end
-  # # 9/12追記
-  # def books
-  # end
+
+
+  def update
+    book = Book.find(params[:id])
+    book.update(book_params)
+    redirect_to book_path(book.id), notice: 'Book was successfully updated.'
+  end
+
+
+  def destroy
+    @book = Book.find(params[:id])
+    @book.destroy
+    redirect_to '/books', notice: 'Book was successfully destroyed.'
+  end
+
 
   private
-  #
+
   def book_params
     params.require(:book).permit(:title, :body)
     # params:formから送られてくるデータ
