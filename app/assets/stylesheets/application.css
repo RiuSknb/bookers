@@ -30,6 +30,47 @@
   color: #005133;
 }
 
+.show {
+  margin: 50px;
+}
+.show p {
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.index {
+  margin: 40px;
+}
+
+.index-edit {
+  font-size: small
+}
+
+.inline-links-show {
+  display: flex;
+  align-items: center;
+  font-size: small
+}
+
+.inline-links-show p {
+  margin: 5px;
+}
+
+
+.inline-links-edit {
+  display: flex;
+  align-items: center;
+  font-size: small
+}
+
+.inline-links-edit p {
+  margin: 5px;
+}
+
+
+
+
+
 table {
   width: 700px;
   font-size: small

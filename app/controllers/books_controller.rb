@@ -21,7 +21,7 @@ class BooksController < ApplicationController
       @books = Book.all
       # →　@listsが空になっているため、再度定義する。
 
-      render :books
+      render :index
     end
   end
 
@@ -37,9 +37,12 @@ class BooksController < ApplicationController
 
 
   def update
-    book = Book.find(params[:id])
-    book.update(book_params)
-    redirect_to book_path(book.id), notice: 'Book was successfully updated.'
+    @book = Book.find(params[:id])
+    if @book.update(book_params)
+      redirect_to book_path(@book.id), notice: 'Book was successfully updated.'
+    else
+      render :edit
+    end
   end
 
 
